@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: AdmiralXy
+      dbms: h2
+      changes:
+        - sqlFile:
+            path: sql/schema.sql
+  - changeSet:
+      id: 2
+      author: AdmiralXy
+      dbms: h2
+      changes:
+        - sqlFile:
+            path: sql/data.sql
