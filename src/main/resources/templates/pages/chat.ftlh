@@ -6,7 +6,6 @@
         <link rel="stylesheet" href="${springMacroRequestContext.contextPath}/css/chat.css"/>
     </#if>
     <#if section="js">
-        <script src="${springMacroRequestContext.contextPath}/js/jquery-3.6.0.min.js"></script>
         <script src="${springMacroRequestContext.contextPath}/js/sockjs.min.js"></script>
         <script src="${springMacroRequestContext.contextPath}/js/stomp.min.js"></script>
         <script src="${springMacroRequestContext.contextPath}/js/chat.js"></script>
