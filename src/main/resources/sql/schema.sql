@@ -1,9 +1,16 @@
+CREATE TABLE IF NOT EXISTS images (
+    id IDENTITY NOT NULL PRIMARY KEY,
+    data BLOB NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS films (
     id IDENTITY NOT NULL PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     release_year INT NOT NULL,
     age_restrictions VARCHAR(255) NOT NULL,
-    description CLOB NOT NULL
+    description CLOB NOT NULL,
+    image_id INT,
+    FOREIGN KEY (image_id) REFERENCES images(id)
 );
 
 CREATE TABLE IF NOT EXISTS halls (
@@ -27,6 +34,6 @@ CREATE TABLE IF NOT EXISTS messages (
     film_id INT NOT NULL,
     username VARCHAR(255) NOT NULL,
     message CLOB NOT NULL,
-    created_at TIMESTAMP NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (film_id) REFERENCES films(id)
 );
