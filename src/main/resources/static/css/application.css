@@ -1,0 +1,58 @@
+*, html, body {
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+footer {
+    margin-top: auto;
+}
+
+.btn:focus {
+    box-shadow: none !important;
+}
+
+.btn-close:focus {
+    box-shadow: none !important;
+}
+
+.form-control:focus {
+    box-shadow: none !important;
+}
+
+.form-select:focus {
+    box-shadow: none !important;
+}
+
+.page-card {
+    display: flex;
+    padding-bottom: 25px;
+}
+
+@media (max-width: 1199px) {
+    .page-card {
+        justify-content: center;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 5px
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555
+}
