@@ -11,7 +11,7 @@
                     <#if session.film.image?? && session.film.image.data?has_content>
                         <img class="session-poster__image" src="${session.film.image.data}" alt="none">
                     <#else>
-                        <img class="session-poster__image" src="/1.jpg" alt="none">
+                        <img class="session-poster__image" src="/img/placeholder.jpg" alt="none">
                     </#if>
                 </div>
             </div>

@@ -5,6 +5,9 @@ import liquibase.repackaged.org.apache.commons.lang3.ArrayUtils;
 import org.mapstruct.Mapper;
 import org.springframework.util.Base64Utils;
 import org.springframework.web.multipart.MultipartFile;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 
 @Mapper(componentModel = "spring")
@@ -13,11 +16,18 @@ public interface ImagesMapper {
     default Image multipartFileToImage(MultipartFile value) {
         Image image = new Image();
         try {
-            image.setData(ArrayUtils.toObject(value.getBytes()));
+            byte[] bytes = value.getBytes();
+
+            BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(bytes));
+            if (bufferedImage == null)
+                throw new IOException();
+
+            image.setData(ArrayUtils.toObject(bytes));
+
+            return image;
         } catch (IOException ignored) {
-            image.setData(null);
+            return null;
         }
-        return image;
     }
 
     default String map(Byte[] value) {

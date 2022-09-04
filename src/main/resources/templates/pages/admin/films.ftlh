@@ -58,7 +58,7 @@
                             <#if film.image?? && film.image.data?has_content>
                                 <img class="film__poster__image" src="${film.image.data}" alt="none">
                             <#else>
-                                <img class="film__poster__image" src="/1.jpg" alt="none">
+                                <img class="film__poster__image" src="/img/placeholder.jpg" alt="none">
                             </#if>
                         </div>
                         <div class="film__info">
