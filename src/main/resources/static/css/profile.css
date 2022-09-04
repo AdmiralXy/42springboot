@@ -1,0 +1,35 @@
+.profile-container {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.profile-container .profile-card {
+    background-color: #d9d9d9;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16);
+    padding: 30px;
+    margin-bottom: 30px;
+    color: #1a1e21;
+}
+
+.profile__name {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.profile__info {
+    margin: 11px 0;
+}
+
+.profile__info small {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 0;
+}
+
+.profile__info p {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 0;
+}

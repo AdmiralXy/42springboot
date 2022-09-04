@@ -1,0 +1,108 @@
+.film-info__title {
+    font-size: 52px;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+
+.film-info__title span {
+    display: block;
+    position: absolute;
+    font-weight: 300;
+    font-size: 20px;
+    bottom: -8px;
+}
+
+.chat {
+    overflow-y: auto;
+    border-radius: 10px;
+    background: #212529;
+}
+
+.chat__container {
+    display: flex;
+    flex-direction: column-reverse;
+    overflow: auto;
+    padding: 26px 26px 26px 0;
+    height: 54vh;
+}
+
+.chat-message {
+    display: inline-table;
+    padding: 30px;
+    margin: 22px;
+    background: #f1f1f1;
+    border-radius: 13px;
+    min-width: 30%;
+    max-width: fit-content;
+    animation: fadeIn ease 0.3s;
+    -webkit-animation: fadeIn ease 0.3s;
+    -moz-animation: fadeIn ease 0.3s;
+    -o-animation: fadeIn ease 0.3s;
+    -ms-animation: fadeIn ease 0.3s;
+}
+
+.chat-message.ms-auto {
+    background: #e6f4ff;
+}
+
+.chat-message__date {
+    font-size: 0.8em;
+    margin-bottom: 12px;
+    color: #626262;
+}
+
+.chat-message__author {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.chat-message__text {
+    font-weight: 300;
+}
+
+.input-message {
+    overflow: hidden;
+}
+
+.input-message__button {
+    border-radius: 0;
+}
+
+.input-message__button svg {
+    fill: #fff;
+}
+
+@media (max-width: 767px) {
+    .film-info__title span {
+        display: none;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

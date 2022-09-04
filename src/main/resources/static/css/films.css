@@ -1,0 +1,30 @@
+.film__poster {
+    border-radius: 2px;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 3px;
+    position: relative;
+    width: 290px;
+    height: 450px;
+}
+
+.film__poster__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.film__info {
+    padding: 15px 1px 0;
+}
+
+.film__info__title {
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+@media (max-width: 1200px) {
+    .film-search {
+        max-width: 100vw;
+    }
+}
