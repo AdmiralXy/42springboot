@@ -56,7 +56,7 @@ public class SecurityConfig {
                     .loginProcessingUrl("/signIn")
                 .and()
                     .logout()
-                    .logoutUrl("/logout")
+                    .logoutUrl("/signOut")
                     .deleteCookies("JSESSIONID")
                 .and()
                     .rememberMe().key(rememberMeSecret).userDetailsService(userDetailService).tokenValiditySeconds(86400 * 30);

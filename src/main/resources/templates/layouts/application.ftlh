@@ -76,7 +76,8 @@
                     </ul>
                     <@sec.authorize access="isAuthenticated()">
                         <div class="navbar-nav">
-                            <form class="nav-link" method="POST" action="/logout">
+                            <form class="nav-link" method="POST" action="/signOut">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" hidden>
                                 <button class="btn btn-sm btn-outline-secondary my-2 my-sm-0" type="submit">Logout</button>
                             </form>
                         </div>
