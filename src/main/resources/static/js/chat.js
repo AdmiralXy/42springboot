@@ -44,9 +44,10 @@ function showMessage(message) {
 
 document.querySelector('.input-message__form').addEventListener('submit', (e) => {
     e.preventDefault()
-    const message = document.querySelector('input[name="message"]').value
+    let message = document.querySelector('input[name="message"]').value
     if (message.length > 0)
         sendMessage(message)
+    document.querySelector('input[name="message"]').value = ''
 })
 
 document.addEventListener('DOMContentLoaded', () => {
