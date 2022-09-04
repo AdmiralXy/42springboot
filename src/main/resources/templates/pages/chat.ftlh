@@ -1,4 +1,6 @@
 <#assign sec=JspTaglibs["http://www.springframework.org/security/tags"]/>
+<@sec.authentication property="principal.user" scope="session" var="user"/>
+<#assign username = user.firstName + " " + user.lastName>
 
 <#import "../layouts/application.ftlh" as base>
 <#import "../components/modal.ftlh" as modal>
@@ -14,7 +16,7 @@
     </#if>
     <#if section="content">
         <div class="row">
-            <input type="hidden" name="username" value="<@sec.authentication property="principal.username"/>" hidden>
+            <input type="hidden" name="username" value="${username}" hidden>
             <input type="hidden" name="film_id" value="${film.id}" hidden>
             <div class="col-12 pt-3 pb-5">
                 <div class="film-info">
@@ -25,7 +27,7 @@
                 <div class="chat">
                     <div class="chat__container">
                         <#list messages as message>
-                            <div class="chat-message">
+                            <div class="chat-message <#if message.username == username>ms-auto</#if>">
                                 <p class="chat-message__date">${message.createdAt}</p>
                                 <p class="chat-message__author">${message.username}</p>
                                 <p class="chat-message__text">${message.message}</p>

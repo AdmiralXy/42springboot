@@ -34,6 +34,8 @@ function showMessage(message) {
     const chatContainer = document.querySelector('.chat__container')
     let fragment = document.createElement('div')
     fragment.classList.add('chat-message')
+    if (message.username === username)
+        fragment.classList.add('ms-auto')
     fragment.innerHTML = `
         <p class="chat-message__date">${message.createdAt}</p>
         <p class="chat-message__author">${message.username}</p>
