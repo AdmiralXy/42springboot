@@ -1,3 +1,5 @@
+<#assign sec=JspTaglibs["http://www.springframework.org/security/tags"]/>
+
 <#macro layout>
     <!doctype html>
     <html lang="en">
@@ -30,27 +32,55 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="${springMacroRequestContext.contextPath}/admin/panel/sessions">
-                                Sessions
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="${springMacroRequestContext.contextPath}/admin/panel/films">
-                                Films
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="${springMacroRequestContext.contextPath}/admin/panel/halls">
-                                Halls
-                            </a>
-                        </li>
+                        <@sec.authorize access="isAuthenticated()">
+                            <@sec.authorize access="hasRole('ADMIN')">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="${springMacroRequestContext.contextPath}/admin/panel/sessions">
+                                        Sessions
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="${springMacroRequestContext.contextPath}/admin/panel/films">
+                                        Films
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="${springMacroRequestContext.contextPath}/admin/panel/halls">
+                                        Halls
+                                    </a>
+                                </li>
+                            </@sec.authorize>
+                            <li class="nav-item">
+                                <a class="nav-link" href="${springMacroRequestContext.contextPath}/sessions">
+                                    Search
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="${springMacroRequestContext.contextPath}/profile">
+                                    Profile
+                                </a>
+                            </li>
+                        </@sec.authorize>
+                        <@sec.authorize access="!isAuthenticated()">
+                            <li class="nav-item">
+                                <a class="nav-link" href="${springMacroRequestContext.contextPath}/signIn">
+                                    Login
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="${springMacroRequestContext.contextPath}/signUp">
+                                    Register
+                                </a>
+                            </li>
+                        </@sec.authorize>
                     </ul>
-                    <div class="navbar-nav">
-                        <a class="nav-link" href="${springMacroRequestContext.contextPath}/sessions">
-                            Search
-                        </a>
-                    </div>
+                    <@sec.authorize access="isAuthenticated()">
+                        <div class="navbar-nav">
+                            <form class="nav-link" method="POST" action="/logout">
+                                <button class="btn btn-sm btn-outline-secondary my-2 my-sm-0" type="submit">Logout</button>
+                            </form>
+                        </div>
+                    </@sec.authorize>
                 </div>
             </div>
         </nav>
@@ -58,9 +88,7 @@
 
     <main class="py-5">
         <div class="container">
-            <div class="row">
-                <#nested "content">
-            </div>
+            <#nested "content">
         </div>
     </main>
 

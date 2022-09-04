@@ -34,7 +34,7 @@ public class SessionsService implements ISessionsService {
     }
 
     @Override
-    public List<SessionDTO> findByFilmTitleContainingIgnoreCase(String title) {
+    public List<SessionDTO> findByFilmTitle(String title) {
         return sessionsMapper.toDtoList(sessionsRepository.findByFilmTitleContainingIgnoreCase(title));
     }
 

@@ -30,6 +30,18 @@ footer {
     box-shadow: none !important;
 }
 
+.form-check-input {
+    user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}
+
+.form-check-input:focus {
+    box-shadow: none;
+}
+
 .page-card {
     display: flex;
     padding-bottom: 25px;

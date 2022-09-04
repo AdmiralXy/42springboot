@@ -19,3 +19,6 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: none
+  security:
+    remember-me:
+      secret: c926f25b96c78a9aa954e0ff964d31698da696944e4496464cedb94efa8ab2c0

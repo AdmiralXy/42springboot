@@ -1,3 +1,9 @@
+INSERT INTO users (first_name, last_name, email, phone, password, active)
+VALUES ('Cinema', 'Administrator', 'admin@cinema.com', '+7 (999) 999-99-99', '$2a$12$2uClmFCdWVEXtH1PjYrY..uWyDgB79ivHKQrEfZvkL3fR.NXqoXyK', true);
+
+INSERT INTO user_roles (user_id, roles)
+VALUES (1, 'ROLE_ADMIN');
+
 INSERT INTO images (data)
 VALUES (FILE_READ('./src/main/resources/sql/data/DATA_1')),
        (FILE_READ('./src/main/resources/sql/data/DATA_2')),

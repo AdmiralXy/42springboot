@@ -25,7 +25,7 @@ public class MessagesService implements IMessagesService {
 
     @Override
     public List<MessageDTO> findByFilmId(Long id) {
-        return messagesMapper.toDtoList(messagesRepository.findByFilmId(id));
+        return messagesMapper.toDtoList(messagesRepository.findByFilmIdOrderByCreatedAtDesc(id));
     }
 
     @Override

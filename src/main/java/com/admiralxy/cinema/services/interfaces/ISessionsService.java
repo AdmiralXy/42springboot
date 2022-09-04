@@ -7,6 +7,6 @@ import java.util.List;
 public interface ISessionsService {
     SessionDTO findById(Long id);
     List<SessionDTO> findAll();
-    List<SessionDTO> findByFilmTitleContainingIgnoreCase(String title);
+    List<SessionDTO> findByFilmTitle(String title);
     SessionDTO save(SessionCreateDTO session);
 }

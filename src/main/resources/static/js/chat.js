@@ -1,14 +1,6 @@
 let filmId = null
+let username = 'user'
 let stompClient = null
-
-function getUsername() {
-    let username = localStorage.getItem('username')
-    if (!username) {
-        username = 'user' + Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString().slice(0, 8)
-        localStorage.setItem('username', username)
-    }
-    return username
-}
 
 function connect() {
     let socket = new SockJS('/ws')
@@ -32,7 +24,7 @@ function sendMessage(message) {
     stompClient.send(`/films/${filmId}/chat/messages`, {},
         JSON.stringify({
             filmId,
-            username: getUsername(),
+            username,
             message,
         })
     )
@@ -59,6 +51,7 @@ document.querySelector('.input-message__form').addEventListener('submit', (e) =>
 
 document.addEventListener('DOMContentLoaded', () => {
     filmId = document.querySelector('input[name="film_id"]').value
+    username = document.querySelector('input[name="username"]').value
     connect()
 })
 

@@ -29,7 +29,7 @@ public class SessionsController {
     @ResponseBody
     @GetMapping("search")
     public ResponseEntity<?> search(@RequestParam("filmName") String filmName) {
-        return new ResponseEntity<>(this.sessionsService.findByFilmTitleContainingIgnoreCase(filmName), HttpStatus.OK);
+        return new ResponseEntity<>(this.sessionsService.findByFilmTitle(filmName), HttpStatus.OK);
     }
 
     @GetMapping("{id}")
