@@ -25,6 +25,7 @@
 ## :ledger:  Features
 
 * Authorization and registration
+* Account activation via email
 * Localization: English and French
 * Forms validation
 * CSRF-attack protection
