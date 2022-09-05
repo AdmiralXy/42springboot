@@ -19,6 +19,7 @@
 * H2 Database
 * Liquibase
 * Mapstruct
+* Lombok
 * Freemarker
 
 ## :ledger:  Features
@@ -44,7 +45,7 @@ Make sure you have JDK 1.8+ and Maven installed
 **Maven basic endpoints:**
 
 ```JavaScript
-// Compile, build and start-up application
+// Compile, build and run the application
 $> mvn spring-boot:run
 
 // Clean target folder which is created after build
