@@ -1,5 +1,8 @@
 package com.admiralxy.cinema.dto.users;
 
+import com.admiralxy.cinema.entities.User;
+import com.admiralxy.cinema.validation.annotation.Unique;
+import com.admiralxy.cinema.validation.annotation.ValidPassword;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import javax.validation.constraints.Email;
@@ -20,6 +23,7 @@ public class UserCreateDTO {
     @NotNull(message = "{validation.not.null}")
     @Length(min = 1, max = 255, message = "{validation.length}")
     @Email(message = "{validation.email}")
+    @Unique(entity = User.class)
     private String email;
 
     @NotNull(message = "{validation.not.null}")
@@ -28,6 +32,6 @@ public class UserCreateDTO {
     private String phone;
 
     @NotNull(message = "{validation.not.null}")
-    @Length(min = 1, max = 255, message = "{validation.length}")
+    @ValidPassword
     private String password;
 }
