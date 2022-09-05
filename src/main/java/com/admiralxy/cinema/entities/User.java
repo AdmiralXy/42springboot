@@ -29,12 +29,15 @@ public class User extends BaseEntity implements Serializable {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "ACTIVE", nullable = false)
+    @Column(name = "active", nullable = false)
     private Boolean active = false;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
+
+    @Column(name = "activation_code")
+    private String activationCode;
 
 }

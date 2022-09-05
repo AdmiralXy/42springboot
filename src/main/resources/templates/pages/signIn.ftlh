@@ -28,6 +28,11 @@
                         <label class="form-check-label" for="remember"><@spring.message "locale.remember.me"/></label>
                     </div>
                     <button type="submit" class="btn auth-form__button"><@spring.message "locale.sign.in"/></button>
+                    <#if activate??>
+                        <div class="alert alert-secondary small mt-4" role="alert">
+                            ${activate}
+                        </div>
+                    </#if>
                 </form>
             </div>
         </div>
