@@ -42,6 +42,19 @@ footer {
     box-shadow: none;
 }
 
+.form-select-lang {
+    color: #8f8f8f;
+    background-color: transparent;
+    border: none;
+    width: unset;
+}
+
+.nav-link__sign-out {
+    margin-top: 2px !important;
+    margin-right: 20px !important;
+    padding-right: 37px !important;
+}
+
 .page-card {
     display: flex;
     padding-bottom: 25px;
@@ -50,6 +63,12 @@ footer {
 @media (max-width: 1199px) {
     .page-card {
         justify-content: center;
+    }
+}
+
+@media (max-width: 1199px) {
+    .form-select-lang {
+        padding-left: 0;
     }
 }
 

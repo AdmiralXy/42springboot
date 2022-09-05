@@ -8,7 +8,7 @@ function updateSessionList(sessions) {
             <a class="session" href="/sessions/${session.id}">
                 <div class="session__content">
                     <p class="session__content__film">${session.film.title}</p>
-                    <p class="session__content__text">Hall #${session.hall.serial}</p>
+                    <p class="session__content__text">#${session.hall.serial}</p>
                     <p class="session__content__text">${session.startAt}</p>
                     <p class="session__content__text">${session.cost}$</p>
                 </div>

@@ -6,10 +6,14 @@ import com.admiralxy.cinema.services.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("signUp")
@@ -36,8 +40,13 @@ public class RegisterController {
     }
 
     @PostMapping
-    public String create(@ModelAttribute("session") UserCreateDTO user) {
-        this.usersService.save(user);
+    public String create(@Valid @ModelAttribute("session") UserCreateDTO user, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("errors", bindingResult);
+            return "redirect:/signUp";
+        } else {
+            this.usersService.save(user);
+        }
         return "redirect:/signIn";
     }
 

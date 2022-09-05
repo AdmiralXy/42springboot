@@ -1,4 +1,5 @@
 <#assign sec=JspTaglibs["http://www.springframework.org/security/tags"]/>
+<#import "/spring.ftl" as spring/>
 
 <#macro layout>
     <!doctype html>
@@ -24,7 +25,9 @@
     <header>
         <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
             <div class="container container-fluid">
-                <a class="navbar-brand" href="${springMacroRequestContext.contextPath}/">Cinema</a>
+                <a class="navbar-brand" href="${springMacroRequestContext.contextPath}/">
+                    <@spring.message "locale.cinema"/>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -36,52 +39,60 @@
                             <@sec.authorize access="hasRole('ADMIN')">
                                 <li class="nav-item">
                                     <a class="nav-link" href="${springMacroRequestContext.contextPath}/admin/panel/sessions">
-                                        Sessions
+                                        <@spring.message "locale.sessions"/>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="${springMacroRequestContext.contextPath}/admin/panel/films">
-                                        Films
+                                        <@spring.message "locale.films"/>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="${springMacroRequestContext.contextPath}/admin/panel/halls">
-                                        Halls
+                                        <@spring.message "locale.halls"/>
                                     </a>
                                 </li>
                             </@sec.authorize>
                             <li class="nav-item">
                                 <a class="nav-link" href="${springMacroRequestContext.contextPath}/sessions">
-                                    Search
+                                    <@spring.message "locale.search"/>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="${springMacroRequestContext.contextPath}/profile">
-                                    Profile
+                                    <@spring.message "locale.profile"/>
                                 </a>
                             </li>
                         </@sec.authorize>
                         <@sec.authorize access="!isAuthenticated()">
                             <li class="nav-item">
                                 <a class="nav-link" href="${springMacroRequestContext.contextPath}/signIn">
-                                    Login
+                                    <@spring.message "locale.login"/>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="${springMacroRequestContext.contextPath}/signUp">
-                                    Register
+                                    <@spring.message "locale.register"/>
                                 </a>
                             </li>
                         </@sec.authorize>
                     </ul>
-                    <@sec.authorize access="isAuthenticated()">
-                        <div class="navbar-nav">
-                            <form class="nav-link" method="POST" action="/signOut">
+                    <div class="navbar-nav">
+                        <select class="form-select form-select-lang" name="lang">
+                            <option selected><@spring.message "locale.language"/></option>
+                            <option value="en_US">English</option>
+                            <option value="fr_FR">Français</option>
+                            <option value="ru_RU">Русский</option>
+                        </select>
+                        <@sec.authorize access="isAuthenticated()">
+                            <form class="nav-link__sign-out" method="POST" action="/signOut">
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" hidden>
-                                <button class="btn btn-sm btn-outline-secondary my-2 my-sm-0" type="submit">Logout</button>
+                                <button class="btn btn-sm btn-outline-secondary my-2 my-sm-0" type="submit">
+                                    <@spring.message "locale.logout"/>
+                                </button>
                             </form>
-                        </div>
-                    </@sec.authorize>
+                        </@sec.authorize>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -105,6 +116,7 @@
 
     </body>
     <script src="${springMacroRequestContext.contextPath}/js/bootstrap.bundle.min.js"></script>
+    <script src="${springMacroRequestContext.contextPath}/js/header.js"></script>
     <#nested "js">
     </html>
 </#macro>

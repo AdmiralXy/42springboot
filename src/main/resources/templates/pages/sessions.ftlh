@@ -1,4 +1,5 @@
 <#import "../layouts/application.ftlh" as base>
+<#import "/spring.ftl" as spring/>
 
 <@base.layout; section>
     <#if section="css">
@@ -12,8 +13,7 @@
             <div class="search-form col-12 pb-5">
                 <form method="GET" action="/sessions/search">
                     <div class="input-group session-search">
-                        <input type="text" class="form-control" name="filmName"
-                               placeholder="Enter the movie title to search the catalog..." aria-describedby="search-describe">
+                        <input type="text" class="form-control" name="filmName" placeholder="<@spring.message "locale.enter.the.movie.title"/>" aria-describedby="search-describe">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary session-search__button" type="submit">
                                 <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +35,9 @@
                     <a class="session" href="${springMacroRequestContext.contextPath}/sessions/${session.id}">
                         <div class="session__content">
                             <p class="session__content__film">${session.film.title}</p>
-                            <p class="session__content__text">Hall #${session.hall.serial}</p>
+                            <p class="session__content__text">
+                                <@spring.message "locale.hall"/> #${session.hall.serial}
+                            </p>
                             <p class="session__content__text">${session.startAt}</p>
                             <p class="session__content__text">${session.cost}$</p>
                         </div>

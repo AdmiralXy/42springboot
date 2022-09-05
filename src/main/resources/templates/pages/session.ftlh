@@ -1,4 +1,5 @@
 <#import "../layouts/application.ftlh" as base>
+<#import "/spring.ftl" as spring/>
 
 <@base.layout; section>
     <#if section="css">
@@ -27,10 +28,12 @@
                         ${session.film.description}
                     </p>
                 </div>
-                <a href="${springMacroRequestContext.contextPath}/films/${session.film.id}/chat" class="btn btn-primary btn-sm btn-chat mb-5">Discussion chat</a>
+                <a href="${springMacroRequestContext.contextPath}/films/${session.film.id}/chat" class="btn btn-primary btn-sm btn-chat mb-5">
+                    <@spring.message "locale.discussion.chat"/>
+                </a>
                 <div class="session-hall">
                     <p class="session-hall__info">
-                        Hall #${session.hall.serial}, ${session.hall.seats} seats
+                        <@spring.message "locale.hall"/> #${session.hall.serial}, ${session.hall.seats} <@spring.message "locale.seats"/>
                     </p>
                     <p class="session-hall__info">
                         ${session.startAt}
