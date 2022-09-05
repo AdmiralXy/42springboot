@@ -14,6 +14,7 @@ public interface UsersMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "active", ignore = true)
     @Mapping(target = "roles", ignore = true)
+    @Mapping(target = "activationCode", ignore = true)
     User toEntity(UserCreateDTO userCreateDTO);
 
     List<UserDTO> toDtoList(List<User> halls);
