@@ -1,4 +1,5 @@
 <#import "../layouts/application.ftlh" as base>
+<#import "/spring.ftl" as spring/>
 
 <@base.layout; section>
     <#if section="css">
@@ -11,23 +12,11 @@
                     <div class="profile-card">
                         <p class="profile__name">${userDetails.user.firstName} ${userDetails.user.lastName}</p>
                         <div class="profile__info">
-                            <small>
-                                <#if .locale == "fr_FR">
-                                    E-mail
-                                <#else>
-                                    Email
-                                </#if>
-                            </small>
+                            <small><@spring.message "locale.email"/></small>
                             <p>${userDetails.user.email}</p>
                         </div>
                         <div class="profile__info">
-                            <small>
-                                <#if .locale == "fr_FR">
-                                    Numéro de téléphone
-                                <#else>
-                                    Phone
-                                </#if>
-                            </small>
+                            <small><@spring.message "locale.phone.number"/></small>
                             <p>${userDetails.user.phone}</p>
                         </div>
                     </div>

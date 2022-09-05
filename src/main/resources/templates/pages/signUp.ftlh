@@ -1,4 +1,5 @@
 <#import "../layouts/application.ftlh" as base>
+<#import "/spring.ftl" as spring/>
 
 <@base.layout; section>
     <#if section="css">
@@ -9,24 +10,11 @@
             <div class="col-lg-5 col-md-12">
                 <form method="POST" action="/signUp" class="auth-form">
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" hidden>
-                    <p class="auth-form__title">
-                        <#if .locale == "fr_FR">
-                            S'inscrire
-                        <#else>
-                            Register
-                        </#if>
-                    </p>
+                    <p class="auth-form__title"><@spring.message "locale.register"/></p>
                     <div class="mb-3">
                         <div class="form-floating">
-                            <input type="email" class="form-control" name="email" id="email"
-                                   placeholder="email@example.com" required>
-                            <label for="email">
-                                <#if .locale == "fr_FR">
-                                    E-mail
-                                <#else>
-                                    Email
-                                </#if>
-                            </label>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="<@spring.message "locale.email"/>" required>
+                            <label for="email"><@spring.message "locale.email"/></label>
                             <#if errors?? && errors.getFieldError("email")??>
                                 <small class="text-danger">${errors.getFieldError("email").getDefaultMessage()}</small>
                             </#if>
@@ -34,15 +22,8 @@
                     </div>
                     <div class="mb-3">
                         <div class="form-floating">
-                            <input type="text" class="form-control" name="password" id="password"
-                                   placeholder="********" required>
-                            <label for="password">
-                                <#if .locale == "fr_FR">
-                                    Le mot de passe
-                                <#else>
-                                    Password
-                                </#if>
-                            </label>
+                            <input type="text" class="form-control" name="password" id="password" placeholder="<@spring.message "locale.password"/>" required>
+                            <label for="password"><@spring.message "locale.password"/></label>
                             <#if errors?? && errors.getFieldError("password")??>
                                 <small class="text-danger">${errors.getFieldError("password").getDefaultMessage()}</small>
                             </#if>
@@ -50,15 +31,8 @@
                     </div>
                     <div class="mb-3">
                         <div class="form-floating">
-                            <input type="text" class="form-control" name="firstName" id="firstName"
-                                   placeholder="John" required>
-                            <label for="firstName">
-                                <#if .locale == "fr_FR">
-                                    Prénom
-                                <#else>
-                                    First name
-                                </#if>
-                            </label>
+                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="<@spring.message "locale.firstName"/>" required>
+                            <label for="firstName"><@spring.message "locale.firstName"/></label>
                             <#if errors?? && errors.getFieldError("firstName")??>
                                 <small class="text-danger">${errors.getFieldError("firstName").getDefaultMessage()}</small>
                             </#if>
@@ -66,15 +40,8 @@
                     </div>
                     <div class="mb-3">
                         <div class="form-floating">
-                            <input type="text" class="form-control" name="lastName" id="lastName"
-                                   placeholder="Doe" required>
-                            <label for="lastName">
-                                <#if .locale == "fr_FR">
-                                    Nom de famille
-                                <#else>
-                                    Last name
-                                </#if>
-                            </label>
+                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="<@spring.message "locale.lastName"/>" required>
+                            <label for="lastName"><@spring.message "locale.lastName"/></label>
                             <#if errors?? && errors.getFieldError("lastName")??>
                                 <small class="text-danger">${errors.getFieldError("lastName").getDefaultMessage()}</small>
                             </#if>
@@ -82,27 +49,14 @@
                     </div>
                     <div class="mb-3">
                         <div class="form-floating">
-                            <input type="text" class="form-control" name="phone" id="phone"
-                                   placeholder="8 (999) 999-99-99" required>
-                            <label for="phone">
-                                <#if .locale == "fr_FR">
-                                    Numéro de téléphone
-                                <#else>
-                                    Phone number
-                                </#if>
-                            </label>
+                            <input type="text" class="form-control" name="phone" id="phone" placeholder="<@spring.message "locale.phone.number"/>" required>
+                            <label for="phone"><@spring.message "locale.phone.number"/></label>
                             <#if errors?? && errors.getFieldError("phone")??>
                                 <small class="text-danger">${errors.getFieldError("phone").getDefaultMessage()}</small>
                             </#if>
                         </div>
                     </div>
-                    <button type="submit" class="btn auth-form__button">
-                        <#if .locale == "fr_FR">
-                            S'inscrire
-                        <#else>
-                            Sign up
-                        </#if>
-                    </button>
+                    <button type="submit" class="btn auth-form__button"><@spring.message "locale.sign.up"/></button>
                 </form>
             </div>
         </div>

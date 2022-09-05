@@ -1,4 +1,5 @@
 <#assign sec=JspTaglibs["http://www.springframework.org/security/tags"]/>
+<#import "/spring.ftl" as spring/>
 
 <#macro layout>
     <!doctype html>
@@ -25,11 +26,7 @@
         <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
             <div class="container container-fluid">
                 <a class="navbar-brand" href="${springMacroRequestContext.contextPath}/">
-                    <#if .locale == "fr_FR">
-                        Cinéma
-                    <#else>
-                        Cinema
-                    </#if>
+                    <@spring.message "locale.cinema"/>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -42,92 +39,56 @@
                             <@sec.authorize access="hasRole('ADMIN')">
                                 <li class="nav-item">
                                     <a class="nav-link" href="${springMacroRequestContext.contextPath}/admin/panel/sessions">
-                                        <#if .locale == "fr_FR">
-                                            Séances
-                                        <#else>
-                                            Sessions
-                                        </#if>
+                                        <@spring.message "locale.sessions"/>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="${springMacroRequestContext.contextPath}/admin/panel/films">
-                                        <#if .locale == "fr_FR">
-                                            Films
-                                        <#else>
-                                            Films
-                                        </#if>
+                                        <@spring.message "locale.films"/>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="${springMacroRequestContext.contextPath}/admin/panel/halls">
-                                        <#if .locale == "fr_FR">
-                                            Salles
-                                        <#else>
-                                            Halls
-                                        </#if>
+                                        <@spring.message "locale.halls"/>
                                     </a>
                                 </li>
                             </@sec.authorize>
                             <li class="nav-item">
                                 <a class="nav-link" href="${springMacroRequestContext.contextPath}/sessions">
-                                    <#if .locale == "fr_FR">
-                                        Chercher
-                                    <#else>
-                                        Search
-                                    </#if>
+                                    <@spring.message "locale.search"/>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="${springMacroRequestContext.contextPath}/profile">
-                                    <#if .locale == "fr_FR">
-                                        Profil
-                                    <#else>
-                                        Profile
-                                    </#if>
+                                    <@spring.message "locale.profile"/>
                                 </a>
                             </li>
                         </@sec.authorize>
                         <@sec.authorize access="!isAuthenticated()">
                             <li class="nav-item">
                                 <a class="nav-link" href="${springMacroRequestContext.contextPath}/signIn">
-                                    <#if .locale == "fr_FR">
-                                        Connexion
-                                    <#else>
-                                        Login
-                                    </#if>
+                                    <@spring.message "locale.login"/>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="${springMacroRequestContext.contextPath}/signUp">
-                                    <#if .locale == "fr_FR">
-                                        S'inscrire
-                                    <#else>
-                                        Register
-                                    </#if>
+                                    <@spring.message "locale.register"/>
                                 </a>
                             </li>
                         </@sec.authorize>
                     </ul>
                     <div class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link mt-1" href="?lang=en-US">
-                                EN
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link mt-1" href="?lang=fr-FR">
-                                FR
-                            </a>
-                        </li>
+                        <select class="form-select form-select-lang" name="lang">
+                            <option selected><@spring.message "locale.language"/></option>
+                            <option value="en_US">English</option>
+                            <option value="fr_FR">Français</option>
+                            <option value="ru_RU">Русский</option>
+                        </select>
                         <@sec.authorize access="isAuthenticated()">
-                            <form class="nav-link" method="POST" action="/signOut">
+                            <form class="nav-link__sign-out" method="POST" action="/signOut">
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" hidden>
                                 <button class="btn btn-sm btn-outline-secondary my-2 my-sm-0" type="submit">
-                                    <#if .locale == "fr_FR">
-                                        Se déconnecter
-                                    <#else>
-                                        Logout
-                                    </#if>
+                                    <@spring.message "locale.logout"/>
                                 </button>
                             </form>
                         </@sec.authorize>
@@ -155,6 +116,7 @@
 
     </body>
     <script src="${springMacroRequestContext.contextPath}/js/bootstrap.bundle.min.js"></script>
+    <script src="${springMacroRequestContext.contextPath}/js/header.js"></script>
     <#nested "js">
     </html>
 </#macro>

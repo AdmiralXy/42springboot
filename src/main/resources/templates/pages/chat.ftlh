@@ -1,4 +1,5 @@
 <#assign sec=JspTaglibs["http://www.springframework.org/security/tags"]/>
+<#import "/spring.ftl" as spring/>
 <@sec.authentication property="principal.user" scope="session" var="user"/>
 <#assign username = user.firstName + " " + user.lastName>
 
@@ -20,7 +21,7 @@
             <input type="hidden" name="film_id" value="${film.id}" hidden>
             <div class="col-12 pt-3 pb-5">
                 <div class="film-info">
-                    <p class="film-info__title">${film.title} <span><#if .locale == "fr_FR">chat de discussion<#else>chat discussion</#if></span></p>
+                    <p class="film-info__title">${film.title} <span><@spring.message "locale.chat.discussion"/></span></p>
                 </div>
             </div>
             <div class="col-12 pb-5">
@@ -36,9 +37,7 @@
                     </div>
                     <div class="input-message">
                         <form class="input-message__form input-group">
-                            <input type="text" class="form-control" name="message"
-                                   placeholder="<#if .locale == "fr_FR">Entrez votre message...<#else>Enter your message...</#if>"
-                                   aria-describedby="message-describe">
+                            <input type="text" class="form-control" name="message" placeholder="<@spring.message "locale.enter.message"/>" aria-describedby="message-describe">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary input-message__button" type="submit">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
