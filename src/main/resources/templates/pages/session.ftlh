@@ -27,7 +27,13 @@
                         ${session.film.description}
                     </p>
                 </div>
-                <a href="${springMacroRequestContext.contextPath}/films/${session.film.id}/chat" class="btn btn-primary btn-sm btn-chat mb-5">Discussion chat</a>
+                <a href="${springMacroRequestContext.contextPath}/films/${session.film.id}/chat" class="btn btn-primary btn-sm btn-chat mb-5">
+                    <#if .locale == "fr_FR">
+                        Chat de discussion
+                    <#else>
+                        Discussion chat
+                    </#if>
+                </a>
                 <div class="session-hall">
                     <p class="session-hall__info">
                         Hall #${session.hall.serial}, ${session.hall.seats} seats

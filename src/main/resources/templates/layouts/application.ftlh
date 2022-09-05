@@ -24,7 +24,13 @@
     <header>
         <nav class="navbar navbar-dark navbar-expand-lg bg-dark">
             <div class="container container-fluid">
-                <a class="navbar-brand" href="${springMacroRequestContext.contextPath}/">Cinema</a>
+                <a class="navbar-brand" href="${springMacroRequestContext.contextPath}/">
+                    <#if .locale == "fr_FR">
+                        Cinéma
+                    <#else>
+                        Cinema
+                    </#if>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -36,52 +42,96 @@
                             <@sec.authorize access="hasRole('ADMIN')">
                                 <li class="nav-item">
                                     <a class="nav-link" href="${springMacroRequestContext.contextPath}/admin/panel/sessions">
-                                        Sessions
+                                        <#if .locale == "fr_FR">
+                                            Séances
+                                        <#else>
+                                            Sessions
+                                        </#if>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="${springMacroRequestContext.contextPath}/admin/panel/films">
-                                        Films
+                                        <#if .locale == "fr_FR">
+                                            Films
+                                        <#else>
+                                            Films
+                                        </#if>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="${springMacroRequestContext.contextPath}/admin/panel/halls">
-                                        Halls
+                                        <#if .locale == "fr_FR">
+                                            Salles
+                                        <#else>
+                                            Halls
+                                        </#if>
                                     </a>
                                 </li>
                             </@sec.authorize>
                             <li class="nav-item">
                                 <a class="nav-link" href="${springMacroRequestContext.contextPath}/sessions">
-                                    Search
+                                    <#if .locale == "fr_FR">
+                                        Chercher
+                                    <#else>
+                                        Search
+                                    </#if>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="${springMacroRequestContext.contextPath}/profile">
-                                    Profile
+                                    <#if .locale == "fr_FR">
+                                        Profil
+                                    <#else>
+                                        Profile
+                                    </#if>
                                 </a>
                             </li>
                         </@sec.authorize>
                         <@sec.authorize access="!isAuthenticated()">
                             <li class="nav-item">
                                 <a class="nav-link" href="${springMacroRequestContext.contextPath}/signIn">
-                                    Login
+                                    <#if .locale == "fr_FR">
+                                        Connexion
+                                    <#else>
+                                        Login
+                                    </#if>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="${springMacroRequestContext.contextPath}/signUp">
-                                    Register
+                                    <#if .locale == "fr_FR">
+                                        S'inscrire
+                                    <#else>
+                                        Register
+                                    </#if>
                                 </a>
                             </li>
                         </@sec.authorize>
                     </ul>
-                    <@sec.authorize access="isAuthenticated()">
-                        <div class="navbar-nav">
+                    <div class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link mt-1" href="?lang=en-US">
+                                EN
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mt-1" href="?lang=fr-FR">
+                                FR
+                            </a>
+                        </li>
+                        <@sec.authorize access="isAuthenticated()">
                             <form class="nav-link" method="POST" action="/signOut">
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" hidden>
-                                <button class="btn btn-sm btn-outline-secondary my-2 my-sm-0" type="submit">Logout</button>
+                                <button class="btn btn-sm btn-outline-secondary my-2 my-sm-0" type="submit">
+                                    <#if .locale == "fr_FR">
+                                        Se déconnecter
+                                    <#else>
+                                        Logout
+                                    </#if>
+                                </button>
                             </form>
-                        </div>
-                    </@sec.authorize>
+                        </@sec.authorize>
+                    </div>
                 </div>
             </div>
         </nav>

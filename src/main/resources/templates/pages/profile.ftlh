@@ -11,11 +11,23 @@
                     <div class="profile-card">
                         <p class="profile__name">${userDetails.user.firstName} ${userDetails.user.lastName}</p>
                         <div class="profile__info">
-                            <small>Email: </small>
+                            <small>
+                                <#if .locale == "fr_FR">
+                                    E-mail
+                                <#else>
+                                    Email
+                                </#if>
+                            </small>
                             <p>${userDetails.user.email}</p>
                         </div>
                         <div class="profile__info">
-                            <small>Phone: </small>
+                            <small>
+                                <#if .locale == "fr_FR">
+                                    Numéro de téléphone
+                                <#else>
+                                    Phone
+                                </#if>
+                            </small>
                             <p>${userDetails.user.phone}</p>
                         </div>
                     </div>

@@ -8,25 +8,52 @@
     <#if section="content">
         <div class="row">
             <div class="col-12 pb-5">
-                <@modal.layout name="newFilm" description="New movie">
+                <#if .locale == "fr_FR">
+                    <#assign description = "Nouveau film">
+                <#else>
+                    <#assign description = "New movie">
+                </#if>
+                <@modal.layout name="newFilm" description="${description}">
                     <form method="POST" action="?" enctype="multipart/form-data">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" hidden>
                         <div class="mb-3">
                             <div class="form-floating">
-                                <input type="text" class="form-control" name="title" id="title"
-                                       placeholder="Title" required>
-                                <label for="title">Title</label>
+                                <input type="text" class="form-control" name="title" id="title" placeholder="Interstellar" required>
+                                <label for="title">
+                                    <#if .locale == "fr_FR">
+                                        Titre
+                                    <#else>
+                                        Title
+                                    </#if>
+                                </label>
+                                <#if errors?? && errors.getFieldError("title")??>
+                                    <small class="text-danger">${errors.getFieldError("title").getDefaultMessage()}</small>
+                                </#if>
                             </div>
                         </div>
                         <div class="mb-3">
                             <div class="form-floating">
-                                <input type="number" class="form-control" name="releaseYear" id="releaseYear"
-                                       placeholder="Year" required>
-                                <label for="releaseYear">Year</label>
+                                <input type="number" min="0" max="10000" class="form-control" name="releaseYear" id="releaseYear" placeholder="2011" required>
+                                <label for="releaseYear">
+                                    <#if .locale == "fr_FR">
+                                        An
+                                    <#else>
+                                        Year
+                                    </#if>
+                                </label>
+                                <#if errors?? && errors.getFieldError("releaseYear")??>
+                                    <small class="text-danger">${errors.getFieldError("releaseYear").getDefaultMessage()}</small>
+                                </#if>
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label class="small" for="age_restrictions">Age restrictions</label>
+                            <label class="small" for="age_restrictions">
+                                <#if .locale == "fr_FR">
+                                    Restrictions d'âge
+                                <#else>
+                                    Age restrictions
+                                </#if>
+                            </label>
                             <select class="form-select" name="ageRestrictions" id="ageRestrictions" required>
                                 <option value="0+">0+</option>
                                 <option value="6+">6+</option>
@@ -34,12 +61,23 @@
                                 <option value="16+">16+</option>
                                 <option value="18+">18+</option>
                             </select>
+                            <#if errors?? && errors.getFieldError("ageRestrictions")??>
+                                <small class="text-danger">${errors.getFieldError("ageRestrictions").getDefaultMessage()}</small>
+                            </#if>
                         </div>
                         <div class="mb-3">
                             <div class="form-floating">
-                            <textarea class="form-control" name="description" id="description"
-                                      placeholder="Description" rows="24" required></textarea>
-                                <label for="description">Description</label>
+                                <textarea class="form-control" name="description" id="description" rows="24" placeholder="......" required></textarea>
+                                <label for="description">
+                                    <#if .locale == "fr_FR">
+                                        La description
+                                    <#else>
+                                        Description
+                                    </#if>
+                                </label>
+                                <#if errors?? && errors.getFieldError("description")??>
+                                    <small class="text-danger">${errors.getFieldError("description").getDefaultMessage()}</small>
+                                </#if>
                             </div>
                         </div>
                         <div class="input-group mb-3">
@@ -47,7 +85,13 @@
                             <input type="file" class="form-control" name="poster" id="poster"
                                    accept="image/png, image/jpeg, image/jpg, image/webp">
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">
+                            <#if .locale == "fr_FR">
+                                Soumettre
+                            <#else>
+                                Submit
+                            </#if>
+                        </button>
                     </form>
                 </@modal.layout>
             </div>

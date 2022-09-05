@@ -13,7 +13,8 @@
                 <form method="GET" action="/sessions/search">
                     <div class="input-group session-search">
                         <input type="text" class="form-control" name="filmName"
-                               placeholder="Enter the movie title to search the catalog..." aria-describedby="search-describe">
+                               placeholder="<#if .locale == "fr_FR">Entrez le titre du film pour rechercher dans le catalogue...<#else>Enter the movie title to search the catalog...</#if>"
+                               aria-describedby="search-describe">
                         <div class="input-group-append">
                             <button class="btn btn-outline-secondary session-search__button" type="submit">
                                 <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg"
@@ -35,7 +36,13 @@
                     <a class="session" href="${springMacroRequestContext.contextPath}/sessions/${session.id}">
                         <div class="session__content">
                             <p class="session__content__film">${session.film.title}</p>
-                            <p class="session__content__text">Hall #${session.hall.serial}</p>
+                            <p class="session__content__text">
+                                <#if .locale == "fr_FR">
+                                    Salle #${session.hall.serial}
+                                <#else>
+                                    Hall #${session.hall.serial}
+                                </#if>
+                            </p>
                             <p class="session__content__text">${session.startAt}</p>
                             <p class="session__content__text">${session.cost}$</p>
                         </div>
