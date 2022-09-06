@@ -41,7 +41,9 @@
 
 ## :zap:  Quick start
 
-Make sure you have JDK 1.8+ and Maven installed
+**Step I:** Make sure you have JDK 1.8+ and Maven installed
+
+**Step II:** Configure SMTP credentials at `src\main\resources\application.yaml`
 
 **Maven basic endpoints:**
 

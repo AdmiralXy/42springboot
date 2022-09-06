@@ -8,11 +8,11 @@ spring:
     password: password
     driverClassName: org.h2.Driver
   mail:
-    host: smtp.gmail.com
-    username: riddleweb.official@gmail.com
-    password: ajlaizegmonavidq
-    port: 465
-    protocol: smtps
+    host: smtp.freesmtpservers.com
+    port: 25
+    username: username
+    password: password
+    protocol: smtp
     debug: false
   servlet:
     multipart:
