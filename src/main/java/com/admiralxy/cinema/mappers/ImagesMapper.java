@@ -18,11 +18,15 @@ public interface ImagesMapper {
         try {
             byte[] bytes = value.getBytes();
 
-            BufferedImage bufferedImage = ImageIO.read(new ByteArrayInputStream(bytes));
+            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bytes);
+
+            BufferedImage bufferedImage = ImageIO.read(byteArrayInputStream);
             if (bufferedImage == null)
                 throw new IOException();
 
             image.setData(ArrayUtils.toObject(bytes));
+
+            byteArrayInputStream.close();
 
             return image;
         } catch (IOException ignored) {
